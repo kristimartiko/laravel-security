@@ -26,3 +26,7 @@ Route::get('/getUser', [LoginController::class, 'getActualUser']);
 Route::middleware('auth')->post('/logout', [LoginController::class, 'logout']);
 
 Route::middleware('auth')->get('/employee', [EmployeeController::class, 'index']);
+Route::post('/addEmployee', [EmployeeController::class, 'store']);
+Route::get('/oneEmployee', [EmployeeController::class, 'show']);
+Route::put('/updateEmployee', [EmployeeController::class, 'update']);
+Route::delete('/deleteEmployee', [EmployeeController::class, 'destroy']);

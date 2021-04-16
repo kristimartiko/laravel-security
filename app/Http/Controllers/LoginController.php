@@ -11,9 +11,9 @@ use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
-    public function __construct() {
-        $this->middleware('auth:api',['except' => ['login', 'register']]);
-    }
+    //public function __construct() {
+    //    $this->middleware('auth:api',['except' => ['login', 'register']]);
+    //}
 
     public function login(Request $request) {
         /*$credentials = request(['email', 'password']);
@@ -70,5 +70,5 @@ class LoginController extends Controller
         return response()->json(['message' => 'User successfully signed out']);
     }
 
-    
+
 }
