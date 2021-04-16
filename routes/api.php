@@ -22,5 +22,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::post('/login', [LoginController::class, 'login']);
 Route::post('/register', [LoginController::class, 'register']);
+Route::get('/getUser', [LoginController::class, 'getActualUser']);
+Route::middleware('auth')->post('/logout', [LoginController::class, 'logout']);
 
 Route::middleware('auth')->get('/employee', [EmployeeController::class, 'index']);

@@ -33,7 +33,11 @@ class LoginController extends Controller
         $password = $request->password;
 
         $token = auth()->attempt(compact('email', 'password'));
-        return $token;
+
+        if(!$token = auth()->attempt(compact('email', 'password'))) {
+            return response()->json(['error' => 'Incorret email/password']);
+        }
+        return response()->json(['token' => $token]);
     }
 
     public function register(Request $request) {
@@ -55,4 +59,16 @@ class LoginController extends Controller
             'valrequest' => $valrequest, 201
         ]);
     }
+
+    public function getActualUser() {
+        return auth()->user();
+    }
+
+    public function logout() {
+        auth()->logout();
+
+        return response()->json(['message' => 'User successfully signed out']);
+    }
+
+    
 }
